@@ -1,5 +1,6 @@
  Example usage:
-     ```exports["rl_requirements"]:ShowRequirements({
+     ```
+     exports["rl_requirements"]:ShowRequirements({
          {
              ["Amount"] = 1,
              ["Image"] = "ox_inventory/web/images/gold_ring.png",
