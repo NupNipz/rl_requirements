@@ -1,0 +1,2 @@
+rlConfig = {}
+rlConfig.Debug = false
