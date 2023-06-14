@@ -1,5 +1,5 @@
  Example usage:
-     exports["rl_requirements"]:ShowRequirements({
+     ```exports["rl_requirements"]:ShowRequirements({
          {
              ["Amount"] = 1,
              ["Image"] = "ox_inventory/web/images/gold_ring.png",
@@ -11,6 +11,7 @@
              ["Label"] = rl.Shared.Items["sapphire_earrings"].label
          },
     })
+    ```
 
  Example remove:
      ``` exports["rl_requirements"]:HideRequirements() ```
