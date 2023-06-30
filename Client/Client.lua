@@ -36,30 +36,17 @@ exports(
                     end
                 end
             elseif rlConfig.Inventory == "ESX" then
-                if rlConfig.UseOxLib then
-                    local ItemData = lib.callback.await("rl_requirements:Server:GetItem", false, Value["Label"])
-                    if not ItemData or ItemData.count < Value["Amount"] then
-                        Reqs[#Reqs + 1] = {
-                            ["Amount"] = Value["Amount"], 
-                            ["Label"] = ItemData.label,
-                        }
-                    end
-                else
-                    Core.TriggerServerCallback(
-                        "rl_requirements:Server:GetItem", 
-                        function(ItemData)
-                            if not ItemData or ItemData.count < Value["Amount"] then
-                                Reqs[#Reqs + 1] = {
-                                    ["Amount"] = Value["Amount"], 
-                                    ["Label"] = ItemData.label,
-                                }
-                            end
-                        end, Value["Label"]
-                    )
+                local ItemData = lib.callback.await("rl_requirements:Server:GetItem", false, Value["Label"])
+                if ItemData.count < Value["Amount"] then
+                    Reqs[#Reqs + 1] = {
+                        ["Amount"] = Value["Amount"], 
+                        ["Image"] = "Images/" .. ItemData.name .. ".png", 
+                        ["Label"] = ItemData.label,
+                    }
                 end
             end
         end
-
+        
         SendNUIMessage({
             Action = "SetRequirements", 
             Display = true,
@@ -74,6 +61,22 @@ exports(
         SendNUIMessage({
             Action = "SetRequirements", 
             Display = false,
+        })
+    end
+)
+
+CreateThread(
+    function()
+        Wait(500)
+        exports["rl_requirements"]:ShowRequirements({ 
+            { 
+                ["Amount"] = 5, 
+                ["name"] = "bread",
+            }, 
+            { 
+                ["Amount"] = 21, 
+                ["name"] = "water",
+            }, 
         })
     end
 )

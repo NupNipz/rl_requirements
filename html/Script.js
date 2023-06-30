@@ -18,7 +18,7 @@ function SetupRequirements(Requirements) {
         $(".Main-Container").append(
             "<div class='Requirement-Slot'>" +
                 "<span class='Amount'>" + Requirement["Amount"] + "x </span>" +
-                "<img src='nui://" + Requirement["Image"] + "'>" +
+                "<img src='" + Requirement["Image"] + "'>" +
                 "<div class='Requirement-Label'>" +
                     "<span class='Item-Label'>" + Requirement["Label"] + "</span>" +
                 "</div>" +
