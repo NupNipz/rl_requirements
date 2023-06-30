@@ -53,19 +53,3 @@ exports(
         })
     end
 )
-
-CreateThread(
-    function()
-        Wait(500)
-        exports["rl_requirements"]:ShowRequirements({ 
-            { 
-                ["Amount"] = 1, 
-                ["Label"] = exports.ox_inventory:Items()["gold_ring"].label,
-            }, 
-            { 
-                ["Amount"] = 21, 
-                ["Label"] = exports.ox_inventory:Items()["gold_ring"].label,
-            }, 
-        })
-    end
-)
