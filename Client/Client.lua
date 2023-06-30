@@ -1,5 +1,5 @@
 local Core
-if rlConfig.Framework == "qb-core" or "qbx-core" then
+if rlConfig.Framework == "qb-core"then
     Core = exports[rlConfig.Framework]:GetCoreObject()
 end
 
