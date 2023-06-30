@@ -64,19 +64,3 @@ exports(
         })
     end
 )
-
-CreateThread(
-    function()
-        Wait(500)
-        exports["rl_requirements"]:ShowRequirements({ 
-            { 
-                ["Amount"] = 5, 
-                ["name"] = "bread",
-            }, 
-            { 
-                ["Amount"] = 21, 
-                ["name"] = "water",
-            }, 
-        })
-    end
-)
