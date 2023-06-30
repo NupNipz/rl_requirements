@@ -3,6 +3,7 @@ game "gta5"
 lua54 "yes"
 
 client_scripts{
+    "Config.lua",
     "Client/Client*.lua",
 } 
 
