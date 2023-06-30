@@ -1,6 +1,8 @@
 local Core
 if rlConfig.Inventory == "qb-inventory" then
     Core = exports["qb-core"]:GetCoreObject()
+elseif rlConfig.Inventory == "ESX" then
+    Core = exports["es_extended"]:getSharedObject()
 end
 
 exports(
@@ -32,6 +34,28 @@ exports(
                             }
                         end
                     end
+                end
+            elseif rlConfig.Inventory == "ESX" then
+                if rlConfig.UseOxLib then
+                    local ItemData = lib.callback.await("rl_requirements:Server:GetItem", false, Value["Label"])
+                    if not ItemData or ItemData.count < Value["Amount"] then
+                        Reqs[#Reqs + 1] = {
+                            ["Amount"] = Value["Amount"], 
+                            ["Label"] = ItemData.label,
+                        }
+                    end
+                else
+                    Core.TriggerServerCallback(
+                        "rl_requirements:Server:GetItem", 
+                        function(ItemData)
+                            if not ItemData or ItemData.count < Value["Amount"] then
+                                Reqs[#Reqs + 1] = {
+                                    ["Amount"] = Value["Amount"], 
+                                    ["Label"] = ItemData.label,
+                                }
+                            end
+                        end, Value["Label"]
+                    )
                 end
             end
         end
