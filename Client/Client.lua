@@ -13,7 +13,7 @@ exports(
                     if Value["Label"] == ItemData["label"] then
                         if not Core.Functions.HasItem(Item, Value["Amount"]) then
                             Reqs[#Reqs + 1] = { 
-                                ["Amount"] = 1, 
+                                ["Amount"] = Value["Amount"], 
                                 ["Image"] = rlConfig.Inventory .. rlConfig.ImagePath .. Item .. ".png", 
                                 ["Label"] = ItemData.label,
                             }
@@ -26,7 +26,7 @@ exports(
                         local ItemCount = exports.ox_inventory:Search("count", Item)
                         if ItemCount < Value["Amount"] then
                             Reqs[#Reqs + 1] = {
-                                ["Amount"] = 1, 
+                                ["Amount"] = Value["Amount"], 
                                 ["Image"] = rlConfig.Inventory .. rlConfig.ImagePath .. Item .. ".png", 
                                 ["Label"] = ItemData.label,
                             }
@@ -50,6 +50,22 @@ exports(
         SendNUIMessage({
             Action = "SetRequirements", 
             Display = false,
+        })
+    end
+)
+
+CreateThread(
+    function()
+        Wait(500)
+        exports["rl_requirements"]:ShowRequirements({ 
+            { 
+                ["Amount"] = 1, 
+                ["Label"] = exports.ox_inventory:Items()["gold_ring"].label,
+            }, 
+            { 
+                ["Amount"] = 21, 
+                ["Label"] = exports.ox_inventory:Items()["gold_ring"].label,
+            }, 
         })
     end
 )
