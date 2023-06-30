@@ -1,6 +1,6 @@
 local Core
-if rlConfig.Framework == "qb-core"then
-    Core = exports[rlConfig.Framework]:GetCoreObject()
+if rlConfig.Inventory == "qb-inventory" then
+    Core = exports["qb-core"]:GetCoreObject()
 end
 
 exports(
