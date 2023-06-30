@@ -11,12 +11,11 @@ if rlConfig.Inventory == "ESX" then
             end
 
             for Key, Value in pairs(Player.getInventory()) do
+                print(ItemLabel, Value.name)
                 if ItemLabel == Value.name then
                     return Player.hasItem(Value.name)
                 end
             end
-
-            return nil
         end
     )
 end

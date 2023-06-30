@@ -36,7 +36,7 @@ exports(
                     end
                 end
             elseif rlConfig.Inventory == "ESX" then
-                local ItemData = lib.callback.await("rl_requirements:Server:GetItem", false, Value["Label"])
+                local ItemData = lib.callback.await("rl_requirements:Server:GetItem", false, Value["name"])
                 if ItemData.count < Value["Amount"] then
                     Reqs[#Reqs + 1] = {
                         ["Amount"] = Value["Amount"], 
