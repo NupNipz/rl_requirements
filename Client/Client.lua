@@ -14,7 +14,7 @@ exports(
                         if not Core.Functions.HasItem(Item, Value["Amount"]) then
                             Reqs[#Reqs + 1] = { 
                                 ["Amount"] = 1, 
-                                ["Image"] = "qb-inventory/html/images/" .. Item .. ".png", 
+                                ["Image"] = rlConfig.Inventory .. rlConfig.ImagePath .. Item .. ".png", 
                                 ["Label"] = ItemData.label,
                             }
                         end
@@ -27,7 +27,7 @@ exports(
                         if ItemCount < Value["Amount"] then
                             Reqs[#Reqs + 1] = {
                                 ["Amount"] = 1, 
-                                ["Image"] = "ox_inventory/web/images/" .. Item .. ".png", 
+                                ["Image"] = rlConfig.Inventory .. rlConfig.ImagePath .. Item .. ".png", 
                                 ["Label"] = ItemData.label,
                             }
                         end
