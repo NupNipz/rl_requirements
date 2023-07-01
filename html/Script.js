@@ -15,14 +15,27 @@ window.addEventListener("message", (Event) => {
 function SetupRequirements(Requirements) {
     $(".Main-Container").empty()
     $.each(Requirements, function(Index, Requirement) {
-        $(".Main-Container").append(
-            "<div class='Requirement-Slot'>" +
-                "<span class='Amount'>" + Requirement["Amount"] + "x </span>" +
-                "<img src='" + Requirement["Image"] + "'>" +
-                "<div class='Requirement-Label'>" +
-                    "<span class='Item-Label'>" + Requirement["Label"] + "</span>" +
-                "</div>" +
-            "</div>"
-        ).fadeIn(500)
+        console.log(Requirement["Local"])
+        if (Requirement["Local"]) {
+            $(".Main-Container").append(
+                "<div class='Requirement-Slot'>" +
+                    "<span class='Amount'>" + Requirement["Amount"] + "x </span>" +
+                    "<img src='" + Requirement["Image"] + "'>" +
+                    "<div class='Requirement-Label'>" +
+                        "<span class='Item-Label'>" + Requirement["Label"] + "</span>" +
+                    "</div>" +
+                "</div>"
+            ).fadeIn(500)
+        } else {
+            $(".Main-Container").append(
+                "<div class='Requirement-Slot'>" +
+                    "<span class='Amount'>" + Requirement["Amount"] + "x </span>" +
+                    "<img src='nui://" + Requirement["Image"] + "'>" +
+                    "<div class='Requirement-Label'>" +
+                        "<span class='Item-Label'>" + Requirement["Label"] + "</span>" +
+                    "</div>" +
+                "</div>"
+            ).fadeIn(500)
+        }
     })
 }

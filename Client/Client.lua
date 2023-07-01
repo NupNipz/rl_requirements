@@ -5,6 +5,20 @@ elseif rlConfig.Inventory == "ESX" then
     Core = exports["es_extended"]:getSharedObject()
 end
 
+
+RegisterCommand("ShowRequired", function()
+    exports["rl_requirements"]:ShowRequirements({ 
+        { 
+            ["Amount"] = 1,
+            ["Label"] = exports.ox_inventory:Items()["gold_ring"].label,
+        }, 
+        { 
+            ["Amount"] = 21,
+            ["Label"] = exports.ox_inventory:Items()["gold_ring"].label,
+        }, 
+    })
+end)
+
 exports(
     "ShowRequirements", 
     function(Requirements) 
@@ -18,6 +32,7 @@ exports(
                                 ["Amount"] = Value["Amount"], 
                                 ["Image"] = rlConfig.Inventory .. rlConfig.ImagePath .. Item .. ".png", 
                                 ["Label"] = ItemData.label,
+                                ["Local"] = false,
                             }
                         end
                     end
@@ -31,6 +46,7 @@ exports(
                                 ["Amount"] = Value["Amount"], 
                                 ["Image"] = rlConfig.Inventory .. rlConfig.ImagePath .. Item .. ".png", 
                                 ["Label"] = ItemData.label,
+                                ["Local"] = false,
                             }
                         end
                     end
@@ -42,6 +58,7 @@ exports(
                         ["Amount"] = Value["Amount"], 
                         ["Image"] = "Images/" .. ItemData.name .. ".png", 
                         ["Label"] = ItemData.label,
+                        ["Local"] = true,
                     }
                 end
             end
